@@ -11,7 +11,7 @@ const Blog = () => {
       <div className="blog__container grid">
         <div className="blog__card">
           <div className="blog__thumb">
-            <a href="#"><span className="blog__category">Project</span></a>
+            <a href="https://dreamer-movie-pakon-poomson.netlify.app"><span className="blog__category">Project</span></a>
             <a href="https://dreamer-movie-pakon-poomson.netlify.app"><img src={Image1} alt="" className="blog__img" /></a>
           </div>
           <div className="blog__details">
@@ -26,7 +26,7 @@ const Blog = () => {
 
         <div className="blog__card">
           <div className="blog__thumb">
-            <a href="#"><span className="blog__category">Tutorial</span></a>
+            <a href="https://pokedex-pakon-pomson.netlify.app"><span className="blog__category">Tutorial</span></a>
             <a href="https://pokedex-pakon-pomson.netlify.app"><img src={Image2} alt="" className="blog__img" /></a>
           </div>
           <div className="blog__details">
@@ -41,7 +41,7 @@ const Blog = () => {
 
         <div className="blog__card">
           <div className="blog__thumb">
-            <a href="#"><span className="blog__category">Tutorial</span></a>
+            <a href="https://sushi-zen-pakon-poomson.netlify.app"><span className="blog__category">Tutorial</span></a>
             <a href="https://sushi-zen-pakon-poomson.netlify.app"><img src={Image3} alt="" className="blog__img" /></a>
           </div>
           <div className="blog__details">
