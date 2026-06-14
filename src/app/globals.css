@@ -18,6 +18,7 @@
   --warning: oklch(0.65 0.15 78);
   --error: oklch(0.58 0.2 25);
   --info: oklch(0.55 0.2 258);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
@@ -116,7 +117,57 @@ select {
     0 22px 55px color-mix(in oklch, var(--foreground) 9%, transparent);
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 600ms var(--ease-out-quint),
+    transform 600ms var(--ease-out-quint);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-visual {
+  transition:
+    border-color 250ms var(--ease-out-quint),
+    box-shadow 400ms var(--ease-out-quint),
+    transform 400ms var(--ease-out-quint);
+}
+
+.project-visual:hover,
+.project-visual:focus-within {
+  border-color: color-mix(in oklch, var(--accent) 55%, var(--border));
+  box-shadow:
+    0 1px 0 color-mix(in oklch, var(--foreground) 5%, transparent),
+    0 26px 65px color-mix(in oklch, var(--accent) 16%, transparent);
+  transform: translateY(-3px) scale(1.004);
+}
+
+.nav-link-active {
+  color: var(--accent);
+}
+
+.nav-link-active::after {
+  transform: scaleX(1);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .project-visual:hover,
+  .project-visual:focus-within {
+    transform: none;
+  }
+
   *,
   *::before,
   *::after {
@@ -124,5 +175,23 @@ select {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 1ms !important;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .print-hidden {
+    display: none !important;
+  }
+
+  .reveal,
+  .reveal[data-visible="true"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .resume-section {
+    break-inside: avoid;
   }
 }

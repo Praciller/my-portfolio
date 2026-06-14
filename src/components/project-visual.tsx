@@ -10,12 +10,12 @@ type ProjectVisualProps = {
 export function ProjectVisual({ project, priority = false }: ProjectVisualProps) {
   if (project.screenshotUrl) {
     return (
-      <div className="surface-shadow relative aspect-[16/10] overflow-hidden rounded-2xl border border-border bg-surface-strong">
+      <div className="project-visual surface-shadow group/visual relative aspect-[16/10] overflow-hidden rounded-2xl border border-border bg-surface-strong">
         <Image
           src={project.screenshotUrl}
           alt={project.screenshotAlt}
           fill
-          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+          className="object-cover transition-[filter,transform] duration-500 ease-out group-hover/visual:scale-[1.02] dark:brightness-[0.92] dark:saturate-[0.92]"
           sizes="(min-width: 1024px) 480px, 100vw"
           priority={priority}
         />
@@ -25,7 +25,7 @@ export function ProjectVisual({ project, priority = false }: ProjectVisualProps)
 
   return (
     <div
-      className="project-frame surface-shadow aspect-[16/10] rounded-2xl border border-border bg-background p-5"
+      className="project-frame project-visual surface-shadow aspect-[16/10] rounded-2xl border border-border bg-background p-5"
       role="img"
       aria-label={project.screenshotAlt}
     >

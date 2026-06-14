@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { ProjectVisual } from "@/components/project-visual";
 import { ButtonLink } from "@/components/ui/button-link";
+import { Reveal } from "@/components/ui/reveal";
 import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
@@ -10,6 +11,7 @@ type ProjectCardProps = {
   priority?: boolean;
   featured?: boolean;
   reverse?: boolean;
+  revealDelay?: number;
 };
 
 export function ProjectCard({
@@ -17,18 +19,20 @@ export function ProjectCard({
   priority,
   featured = false,
   reverse = false,
+  revealDelay = 0,
 }: ProjectCardProps) {
   const copyColumn = reverse ? "lg:col-start-2" : "lg:col-start-1";
   const visualColumn = reverse ? "lg:col-start-1" : "lg:col-start-2";
 
   return (
-    <article
-      className={
-        featured
-          ? "group grid gap-7 rounded-3xl border border-border bg-background p-5 sm:p-7 lg:grid-cols-[minmax(0,1.02fr)_minmax(360px,0.98fr)] lg:gap-12 lg:p-10"
-          : "group grid gap-7 border-b border-border-soft py-10 last:border-b-0 lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.85fr)] lg:gap-12 lg:py-14"
-      }
-    >
+    <Reveal delay={revealDelay}>
+      <article
+        className={
+          featured
+            ? "group grid gap-7 rounded-3xl border border-border bg-background p-5 transition-[border-color,box-shadow] duration-300 hover:border-accent/50 hover:shadow-[0_24px_60px_color-mix(in_oklch,var(--accent)_9%,transparent)] focus-within:border-accent/60 sm:p-7 lg:grid-cols-[minmax(0,1.02fr)_minmax(360px,0.98fr)] lg:gap-12 lg:p-10"
+            : "group grid gap-7 border-b border-border-soft pt-10 pb-8 last:border-b-0 last:pb-3 lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.85fr)] lg:gap-12 lg:pt-14 lg:pb-10 lg:last:pb-4"
+        }
+      >
       <div className={copyColumn}>
         <div className="flex flex-wrap items-center gap-3">
           <span className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1.5 text-xs font-bold text-accent">
@@ -53,14 +57,32 @@ export function ProjectCard({
         <ProjectVisual project={project} priority={priority} />
       </div>
 
-      <div className={`${copyColumn} grid gap-4 text-sm leading-[1.65] sm:grid-cols-2`}>
+      <div className={`${copyColumn} grid gap-4 text-sm leading-[1.6] sm:grid-cols-2 lg:grid-cols-1`}>
         <div className="rounded-2xl bg-surface p-4">
           <p className="font-bold text-foreground">What I built</p>
-          <p className="mt-2 text-muted">{project.whatIBuilt}</p>
+          <ul className="mt-3 space-y-2.5 text-muted">
+            <li className="grid grid-cols-[8px_1fr] gap-2.5">
+              <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+              <span><strong className="font-bold text-foreground">System:</strong> {project.whatIBuilt}</span>
+            </li>
+            <li className="grid grid-cols-[8px_1fr] gap-2.5">
+              <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+              <span><strong className="font-bold text-foreground">Implementation:</strong> {project.highlights[0]}</span>
+            </li>
+          </ul>
         </div>
         <div className="rounded-2xl bg-surface p-4">
           <p className="font-bold text-foreground">What it proves</p>
-          <p className="mt-2 text-muted">{project.whatItProves}</p>
+          <ul className="mt-3 space-y-2.5 text-muted">
+            <li className="grid grid-cols-[8px_1fr] gap-2.5">
+              <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+              <span><strong className="font-bold text-foreground">Skills:</strong> {project.whatItProves}</span>
+            </li>
+            <li className="grid grid-cols-[8px_1fr] gap-2.5">
+              <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" />
+              <span><strong className="font-bold text-foreground">Core stack:</strong> {project.techStack.slice(0, 4).join(", ")}</span>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -89,6 +111,7 @@ export function ProjectCard({
           ) : null}
         </div>
       </div>
-    </article>
+      </article>
+    </Reveal>
   );
 }

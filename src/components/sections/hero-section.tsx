@@ -2,6 +2,7 @@ import { BriefcaseBusiness, Download, GitBranch, PanelsTopLeft } from "lucide-re
 
 import { ProjectVisual } from "@/components/project-visual";
 import { ButtonLink } from "@/components/ui/button-link";
+import { Reveal } from "@/components/ui/reveal";
 import { profile } from "@/data/profile";
 import { projects } from "@/data/projects";
 
@@ -13,7 +14,7 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden border-b border-border-soft">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 sm:px-8 sm:py-20 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] lg:gap-16 lg:py-24">
-        <div>
+        <Reveal>
           <div className="flex flex-wrap items-center gap-3">
             <span className="rounded-full bg-accent-soft px-3 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-accent">
               {profile.heroLabel}
@@ -45,9 +46,9 @@ export function HeroSection() {
               LinkedIn
             </ButtonLink>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="relative">
+        <Reveal delay={140} className="relative">
           <div aria-hidden="true" className="absolute -inset-5 -z-10 rounded-[2rem] bg-accent-soft" />
           <ProjectVisual project={evidenceProject} priority />
           <div className="mt-4 flex items-start justify-between gap-5">
@@ -61,22 +62,24 @@ export function HeroSection() {
               {evidenceProject.presentationStatus}
             </span>
           </div>
-        </div>
+        </Reveal>
       </div>
 
-      <dl className="mx-auto grid max-w-7xl border-t border-border-soft px-5 sm:px-8 md:grid-cols-3">
-        {profile.proofPoints.map((point) => (
-          <div
-            key={point.label}
-            className="border-b border-border-soft py-5 md:border-b-0 md:border-r md:px-6 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
-          >
-            <dt className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-accent">
-              {point.label}
-            </dt>
-            <dd className="mt-2 text-sm font-semibold leading-[1.5]">{point.value}</dd>
-          </div>
-        ))}
-      </dl>
+      <Reveal delay={220}>
+        <dl className="mx-auto grid max-w-7xl border-t border-border-soft px-5 sm:px-8 md:grid-cols-3">
+          {profile.proofPoints.map((point) => (
+            <div
+              key={point.label}
+              className="border-b border-border-soft py-5 md:border-b-0 md:border-r md:px-6 md:first:pl-0 md:last:border-r-0 md:last:pr-0"
+            >
+              <dt className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-accent">
+                {point.label}
+              </dt>
+              <dd className="mt-2 text-sm font-semibold leading-[1.5]">{point.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </Reveal>
     </section>
   );
 }

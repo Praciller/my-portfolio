@@ -2,14 +2,78 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { navigationItems } from "@/data/navigation";
 import { profile } from "@/data/profile";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState(pathname);
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      return;
+    }
+
+    let animationFrame = 0;
+
+    const updateActiveSection = () => {
+      const marker = window.scrollY + window.innerHeight * 0.32;
+      let nextActive = "/";
+
+      for (const item of navigationItems) {
+        if (!item.href.startsWith("/#")) {
+          continue;
+        }
+
+        const section = document.getElementById(item.href.slice(2));
+
+        if (section && section.offsetTop <= marker) {
+          nextActive = item.href;
+        }
+      }
+
+      setActiveHref(nextActive);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [pathname]);
+
+  const isActive = (href: string) => {
+    if (href.startsWith("/#")) {
+      return pathname === "/" && activeHref === href;
+    }
+
+    if (href === "/") {
+      return pathname === "/" && activeHref === "/";
+    }
+
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
+  const activateLink = (href: string) => {
+    if (href.startsWith("/#")) {
+      setActiveHref(href);
+    }
+
+    setIsOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background">
@@ -24,7 +88,12 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className="transition-colors duration-200 hover:text-accent"
+              aria-current={isActive(item.href) ? (item.href.startsWith("/#") ? "location" : "page") : undefined}
+              className={cn(
+                "relative py-2 transition-colors duration-200 after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-accent after:transition-transform after:duration-200 hover:text-accent hover:after:scale-x-100 focus-visible:text-accent focus-visible:after:scale-x-100",
+                isActive(item.href) && "nav-link-active font-bold",
+              )}
+              onClick={() => activateLink(item.href)}
             >
               {item.label}
             </Link>
@@ -57,10 +126,17 @@ export function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-lg px-3 py-3 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-accent"
-                onClick={() => setIsOpen(false)}
+                aria-current={isActive(item.href) ? (item.href.startsWith("/#") ? "location" : "page") : undefined}
+                className={cn(
+                  "flex min-h-11 items-center justify-between rounded-lg px-3 py-3 text-sm font-medium text-muted transition-colors hover:bg-accent-soft hover:text-accent focus-visible:bg-accent-soft focus-visible:text-accent",
+                  isActive(item.href) && "bg-accent-soft font-bold text-accent",
+                )}
+                onClick={() => activateLink(item.href)}
               >
                 {item.label}
+                {isActive(item.href) ? (
+                  <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-accent" />
+                ) : null}
               </Link>
             ))}
           </div>
