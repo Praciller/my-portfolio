@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Inter } from "next/font/google";
+import { JetBrains_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   weight: ["400"],
   display: "swap",
@@ -18,18 +18,18 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://pakon-portfolio.vercel.app"),
   title: {
-    default: "Pakon Poomson | AI Engineer, GenAI Engineer & Data Engineer",
+    default: "Pakon Poomson | AI Engineer Portfolio",
     template: "%s | Pakon Poomson",
   },
   description:
-    "Portfolio and resume of Pakon Poomson, featuring agentic RAG, multimodal AI, data engineering, forecasting, and explainable ML projects.",
+    "Portfolio of Pakon Poomson, focused on AI engineering, data engineering, RAG systems, automation, and full-stack deployed applications.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Pakon Poomson | AI Engineer, GenAI Engineer & Data Engineer",
+    title: "Pakon Poomson | AI Engineer Portfolio",
     description:
-      "Agentic RAG, multimodal AI, data engineering, forecasting, and explainable ML projects by Pakon Poomson.",
+      "Practical AI engineering, data systems, RAG workflows, automation, and deployed full-stack applications.",
     url: "/",
     siteName: "Pakon Poomson Portfolio",
     images: [
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pakon Poomson | AI Engineer, GenAI Engineer & Data Engineer",
+    title: "Pakon Poomson | AI Engineer Portfolio",
     description:
-      "Agentic RAG, multimodal AI, data engineering, forecasting, and explainable ML projects by Pakon Poomson.",
+      "Practical AI engineering, data systems, RAG workflows, automation, and deployed full-stack applications.",
     images: ["/opengraph-image"],
   },
 };
@@ -73,7 +73,7 @@ export default function RootLayout({
       lang="en"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${manrope.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

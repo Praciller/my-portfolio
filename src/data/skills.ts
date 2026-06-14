@@ -5,41 +5,54 @@ export type SkillGroup = {
 
 export const skillGroups: SkillGroup[] = [
   {
-    category: "Programming",
-    skills: ["Python", "TypeScript", "JavaScript", "SQL", "C#", "Java"],
-  },
-  {
-    category: "Frontend",
-    skills: ["React", "Next.js", "Tailwind CSS", "HTML", "CSS", "Responsive UI"],
-  },
-  {
-    category: "Backend",
-    skills: ["FastAPI", "Pydantic", "REST APIs", "Node.js", "SQLAlchemy", "Provider routing"],
-  },
-  {
-    category: "Database",
-    skills: ["PostgreSQL", "Qdrant", "pgvector", "SQLite", "IndexedDB", "Data normalization"],
-  },
-  {
-    category: "AI / LLM",
+    category: "AI & Retrieval",
     skills: [
-      "Gemini API",
-      "Groq",
-      "Cerebras",
+      "Python",
       "LangGraph",
       "RAG",
+      "Qdrant",
       "Embeddings",
+      "Gemini",
+      "Groq",
+      "Cerebras",
       "Multimodal extraction",
-      "Structured AI output",
+      "Structured outputs",
       "Offline evaluation",
     ],
   },
   {
-    category: "Data / Infrastructure",
-    skills: ["Apache Kafka", "Apache Flink", "VictoriaMetrics", "Time-series data", "Ingestion validation"],
+    category: "Frontend",
+    skills: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Recharts", "Responsive UI"],
   },
   {
-    category: "Delivery",
+    category: "Backend & APIs",
+    skills: [
+      "FastAPI",
+      "Pydantic",
+      "REST APIs",
+      "Node.js",
+      "SQLAlchemy",
+      "Provider routing",
+      "C#",
+      "Java",
+    ],
+  },
+  {
+    category: "Data & Infrastructure",
+    skills: [
+      "PostgreSQL",
+      "pgvector",
+      "IndexedDB",
+      "Apache Kafka",
+      "Apache Flink",
+      "VictoriaMetrics",
+      "Time-series data",
+      "Data normalization",
+      "Ingestion validation",
+    ],
+  },
+  {
+    category: "Delivery & Operations",
     skills: ["Git", "GitHub", "Docker", "Vercel", "Render", "GitHub Actions"],
   },
 ];

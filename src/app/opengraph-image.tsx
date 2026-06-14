@@ -13,11 +13,11 @@ export default function Image() {
       <div
         style={{
           alignItems: "stretch",
-          background: "#FAFAFA",
-          color: "#0A0A0A",
+          background: "#F5F7FC",
+          color: "#172033",
           display: "flex",
           flexDirection: "column",
-          fontFamily: "Inter, Arial, sans-serif",
+          fontFamily: "Arial, sans-serif",
           height: "100%",
           justifyContent: "space-between",
           padding: 72,
@@ -26,30 +26,30 @@ export default function Image() {
       >
         <div
           style={{
-            borderTop: "2px solid #0A0A0A",
+            borderTop: "8px solid #315CD6",
             display: "flex",
             flexDirection: "column",
             paddingTop: 36,
           }}
         >
-          <div style={{ fontSize: 84, fontWeight: 800, lineHeight: 1.05 }}>
+          <div style={{ fontSize: 78, fontWeight: 800, letterSpacing: "-3px", lineHeight: 1.05 }}>
             Pakon Poomson
           </div>
-          <div style={{ fontSize: 42, fontWeight: 700, lineHeight: 1.15, marginTop: 32 }}>
-            AI Engineer / GenAI Engineer / Data Engineer
+          <div style={{ fontSize: 38, fontWeight: 700, lineHeight: 1.18, marginTop: 30, maxWidth: 920 }}>
+            Practical AI products, retrieval systems, and data workflows.
           </div>
         </div>
         <div
           style={{
-            borderTop: "1px solid #D4D4D8",
+            borderTop: "1px solid #CBD3E3",
             display: "flex",
             fontSize: 24,
             justifyContent: "space-between",
             paddingTop: 28,
           }}
         >
-          <span>GitHub: Praciller</span>
-          <span>RAG / Multimodal AI / ML</span>
+          <span>AI Engineer · GenAI · Data Systems</span>
+          <span>github.com/Praciller</span>
         </div>
       </div>
     ),

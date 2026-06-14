@@ -3,18 +3,21 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #fafafa;
-  --foreground: #0a0a0a;
-  --surface: #fafafa;
-  --surface-strong: #f4f4f5;
-  --surface-inverse: #0a0a0a;
-  --muted: #71717a;
-  --border: #d4d4d8;
-  --border-soft: #e5e5e5;
-  --success: #16a34a;
-  --warning: #ca8a04;
-  --error: #dc2626;
-  --info: #71717a;
+  --background: oklch(0.985 0.006 255);
+  --foreground: oklch(0.205 0.025 258);
+  --surface: oklch(0.97 0.01 255);
+  --surface-strong: oklch(0.94 0.017 255);
+  --surface-inverse: oklch(0.205 0.025 258);
+  --muted: oklch(0.49 0.026 258);
+  --border: oklch(0.83 0.02 255);
+  --border-soft: oklch(0.9 0.014 255);
+  --accent: oklch(0.55 0.2 258);
+  --accent-soft: oklch(0.93 0.04 255);
+  --accent-contrast: oklch(0.985 0.006 255);
+  --success: oklch(0.56 0.16 150);
+  --warning: oklch(0.65 0.15 78);
+  --error: oklch(0.58 0.2 25);
+  --info: oklch(0.55 0.2 258);
 }
 
 @theme inline {
@@ -26,25 +29,29 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-border-soft: var(--border-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
   --color-info: var(--info);
-  --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback", ui-monospace, monospace;
-  --shadow-none: none;
-  --radius-none: 0px;
+  --font-sans: "Manrope", "Manrope Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "JetBrains Mono Fallback", ui-monospace, monospace;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #fafafa;
-  --surface: #0a0a0a;
-  --surface-strong: #18181b;
-  --surface-inverse: #fafafa;
-  --muted: #a1a1aa;
-  --border: #3f3f46;
-  --border-soft: #27272a;
+  --background: oklch(0.16 0.02 258);
+  --foreground: oklch(0.94 0.01 255);
+  --surface: oklch(0.19 0.025 258);
+  --surface-strong: oklch(0.23 0.03 258);
+  --surface-inverse: oklch(0.94 0.01 255);
+  --muted: oklch(0.7 0.025 255);
+  --border: oklch(0.34 0.035 258);
+  --border-soft: oklch(0.27 0.03 258);
+  --accent: oklch(0.72 0.15 252);
+  --accent-soft: oklch(0.25 0.055 255);
+  --accent-contrast: oklch(0.16 0.02 258);
 }
 
 * {
@@ -62,11 +69,16 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 a,
 button {
   text-underline-offset: 4px;
+}
+
+a {
+  text-decoration-thickness: 1px;
 }
 
 button,
@@ -77,13 +89,13 @@ select {
 }
 
 ::selection {
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--accent);
+  color: var(--accent-contrast);
 }
 
 :focus-visible {
-  outline: 2px solid var(--foreground);
-  outline-offset: 2px;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .project-frame {
@@ -92,6 +104,16 @@ select {
 
 .text-balance {
   text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+.surface-shadow {
+  box-shadow:
+    0 1px 0 color-mix(in oklch, var(--foreground) 5%, transparent),
+    0 22px 55px color-mix(in oklch, var(--foreground) 9%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

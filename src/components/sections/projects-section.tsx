@@ -7,16 +7,23 @@ export function ProjectsSection() {
   return (
     <Section
       id="projects"
-      title="Flagship Case Studies"
-      intro="Three concise case studies covering agentic RAG, multimodal product engineering, and time-series ML evaluation."
+      title="Selected Work"
+      intro="Three evidence-led case studies across agentic RAG, multimodal product engineering, and time-series ML evaluation."
+      tone="soft"
     >
-      <div>
+      <div className="space-y-4">
         {flagshipProjects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} priority={index === 0} />
+          <ProjectCard
+            key={project.id}
+            project={project}
+            priority={index === 0}
+            featured={index === 0}
+            reverse={index === 2}
+          />
         ))}
-        <div className="mt-10">
+        <div className="pt-6">
           <ButtonLink href="/projects" variant="secondary">
-            View All Projects
+            View all six projects
           </ButtonLink>
         </div>
       </div>

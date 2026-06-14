@@ -6,7 +6,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      className="inline-flex h-10 w-10 items-center justify-center border border-border bg-background text-foreground transition-colors duration-150 hover:border-foreground"
+      className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-background text-foreground transition-colors duration-200 hover:border-accent hover:text-accent"
       aria-label="Toggle color mode"
       onClick={() => {
         const isDark = document.documentElement.classList.toggle("dark");

@@ -6,34 +6,37 @@ export function AboutSection() {
     <Section
       id="about"
       title="About"
-      intro="Practical AI engineering backed by public implementation evidence."
-      className="pt-4 lg:pt-8"
+      intro="Practical engineering across models, APIs, data, interfaces, and deployment."
     >
-      <div className="grid gap-10 lg:grid-cols-[1fr_280px]">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div>
-          <p className="max-w-[72ch] text-lg font-light leading-[1.65] text-muted">
+          <p className="max-w-[68ch] text-xl font-semibold leading-[1.55] tracking-[-0.015em]">
             {profile.summary}
           </p>
-          <p className="mt-6 max-w-[72ch] text-base font-light leading-[1.65] text-muted">
-            The current portfolio emphasizes agentic RAG, multimodal extraction,
-            validated document analysis, reproducible forecasting, explainable ML,
-            and bilingual public-data intelligence.
+          <p className="mt-6 max-w-[68ch] text-base leading-[1.75] text-muted">
+            I use personal projects to show the parts that are often missing from AI demos:
+            input validation, provider routing, safe fallback, measurable evaluation,
+            honest limitations, and interfaces people can actually use.
           </p>
         </div>
-        <dl className="border-t border-border text-sm">
-          <div className="grid gap-2 border-b border-border py-4">
-            <dt className="text-muted">Target roles</dt>
-            <dd>{profile.targetRoles.join(", ")}</dd>
-          </div>
-          <div className="grid gap-2 border-b border-border py-4">
-            <dt className="text-muted">Company visible on GitHub</dt>
-            <dd>{profile.companyFromGithub}</dd>
-          </div>
-          <div className="grid gap-2 border-b border-border py-4">
-            <dt className="text-muted">Content status</dt>
-            <dd>Verified against current resume materials and public repositories.</dd>
-          </div>
-        </dl>
+        <div className="rounded-2xl border border-border bg-surface p-5 sm:p-6">
+          <p className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-accent">
+            How I work
+          </p>
+          <ol className="mt-5 grid gap-5">
+            {profile.workingPrinciples.map((principle, index) => (
+              <li key={principle} className="grid grid-cols-[2rem_1fr] gap-3 text-sm leading-[1.6]">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-soft font-mono text-xs text-accent">
+                  {index + 1}
+                </span>
+                <span>{principle}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-6 border-t border-border-soft pt-5 text-sm text-muted">
+            Based in {profile.location}. Targeting {profile.targetRoles.join(", ")} roles.
+          </p>
+        </div>
       </div>
     </Section>
   );

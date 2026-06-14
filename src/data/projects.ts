@@ -18,6 +18,7 @@ export type Project = {
   screenshotUrl: string;
   screenshotAlt: string;
   status: ProjectStatus;
+  presentationStatus: "Case study" | "Demo available" | "Frontend showcase";
   flagship: boolean;
   tags: string[];
   highlights: string[];
@@ -59,6 +60,7 @@ export const projects: Project[] = [
     screenshotUrl: "/images/projects/customer-support-rag-triage-agent.png",
     screenshotAlt: "Customer support RAG triage dashboard and workflow concept.",
     status: "completed",
+    presentationStatus: "Case study",
     flagship: true,
     tags: ["RAG", "LangGraph", "Qdrant", "Evaluation"],
     highlights: [
@@ -120,6 +122,7 @@ export const projects: Project[] = [
     screenshotUrl: "/images/projects/receipt-ai-expense-tracker.png",
     screenshotAlt: "Receipt expense tracker dashboard with totals, categories, and receipt history.",
     status: "completed",
+    presentationStatus: "Demo available",
     flagship: true,
     tags: ["Multimodal AI", "Local-first", "Thai/English", "Analytics"],
     highlights: [
@@ -182,6 +185,7 @@ export const projects: Project[] = [
     screenshotUrl: "/images/projects/ai-resume-matcher.png",
     screenshotAlt: "Structured AI resume analysis report with score, strengths, gaps, and recommendations.",
     status: "completed",
+    presentationStatus: "Demo available",
     flagship: false,
     tags: ["Document AI", "FastAPI", "Provider routing", "Career tooling"],
     highlights: [
@@ -242,6 +246,7 @@ export const projects: Project[] = [
     screenshotUrl: "/images/projects/climate-co2-forecasting-ml.png",
     screenshotAlt: "CO2 Forecast Lab dashboard showing model comparison and atmospheric trend.",
     status: "completed",
+    presentationStatus: "Case study",
     flagship: true,
     tags: ["Forecasting", "Time series", "Evaluation", "Anomaly detection"],
     highlights: [
@@ -302,6 +307,7 @@ export const projects: Project[] = [
     screenshotUrl: "/images/projects/explainable-cancer-diagnosis-ml.png",
     screenshotAlt: "Explainable cancer diagnosis dashboard with measured model results and disclaimer.",
     status: "completed",
+    presentationStatus: "Frontend showcase",
     flagship: false,
     tags: ["Explainable ML", "SHAP", "Classification", "Responsible AI"],
     highlights: [
@@ -364,6 +370,7 @@ export const projects: Project[] = [
     screenshotUrl: "/images/projects/thai-procurement-intelligence.png",
     screenshotAlt: "Thai procurement intelligence home dashboard with records, budget metrics, and province counts.",
     status: "completed",
+    presentationStatus: "Demo available",
     flagship: false,
     tags: ["Data engineering", "Hybrid search", "Bilingual", "Public data"],
     highlights: [
