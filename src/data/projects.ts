@@ -56,7 +56,6 @@ export const projects: Project[] = [
       "Docker",
     ],
     githubUrl: "https://github.com/Praciller/customer-support-rag-triage-agent",
-    liveDemoUrl: "https://customer-support-rag-triage-agent.onrender.com",
     screenshotUrl: "/images/projects/customer-support-rag-triage-agent.png",
     screenshotAlt: "Customer support RAG triage dashboard and workflow concept.",
     status: "completed",
@@ -86,7 +85,7 @@ export const projects: Project[] = [
       "Ingest help-center policy documents with stronger provenance.",
       "Capture human feedback and response ratings for continuous evaluation.",
     ],
-    sourceNote: "Repository README, implementation, and deployment verification reviewed June 13, 2026.",
+    sourceNote: "Repository README, implementation, and deployment verification reviewed June 14, 2026.",
   },
   {
     id: "receipt-ai-expense-tracker",
@@ -100,7 +99,7 @@ export const projects: Project[] = [
     solution:
       "Built a local-first Next.js application with a capability-aware AI router, structured Zod validation, Buddhist Era date normalization, editable human review, IndexedDB persistence through Dexie, and client-side spending analytics.",
     outcome:
-      "The full product flow works without a database or account. AI parsing returns review data only; users explicitly confirm each receipt before it enters the local ledger and dashboard.",
+      "The full product flow works without a database or account. AI parsing returns review data only; users explicitly confirm each receipt before it enters the local ledger and dashboard. The public deployment uses deterministic mock AI until server-side provider keys are configured.",
     whatIBuilt:
       "A multimodal receipt-to-expense workflow with safe provider routing, human review, local persistence, and analytics.",
     whatItProves:
@@ -117,7 +116,7 @@ export const projects: Project[] = [
       "Recharts",
     ],
     githubUrl: "https://github.com/Praciller/receipt-ai-expense-tracker",
-    liveDemoUrl: "https://receipt-ai-expense-tracker.vercel.app/",
+    liveDemoUrl: "https://receipt-ai-expense-tracker-eta.vercel.app/",
     screenshotUrl: "/images/projects/receipt-ai-expense-tracker.png",
     screenshotAlt: "Receipt expense tracker dashboard with totals, categories, and receipt history.",
     status: "completed",
@@ -147,7 +146,7 @@ export const projects: Project[] = [
       "Add duplicate receipt detection and batch upload.",
       "Expose field-level confidence and review history.",
     ],
-    sourceNote: "Repository README, tests, and public deployment reviewed June 13, 2026.",
+    sourceNote: "Repository README, tests, and public deployment reviewed June 14, 2026.",
   },
   {
     id: "ai-resume-matcher",
@@ -161,7 +160,7 @@ export const projects: Project[] = [
     solution:
       "Modernized the product into a React and FastAPI application with PDF validation, bounded extraction, 9arm-first provider routing, Gemini/Groq/Cerebras fallback, strict Pydantic output models, deterministic mock mode, caching, and safe report rendering.",
     outcome:
-      "The deployed application returns a validated report with fit score, evidence, missing skills, recommendations, learning priorities, interview questions, risk flags, provider metadata, and warnings.",
+      "The deployed application returns a validated report with fit score, evidence, missing skills, recommendations, learning priorities, interview questions, risk flags, provider metadata, and warnings. Its deterministic sample flow remains usable without provider credentials.",
     whatIBuilt:
       "A validated document-analysis pipeline that converts a PDF resume and job description into a structured career report.",
     whatItProves:
@@ -209,7 +208,7 @@ export const projects: Project[] = [
       "Calibrate score interpretation against a labeled evaluation set.",
       "Add comparison and export workflows for multiple target roles.",
     ],
-    sourceNote: "Repository README, verification docs, and public deployment reviewed June 13, 2026.",
+    sourceNote: "Repository README, verification docs, and public deployment reviewed June 14, 2026.",
   },
   {
     id: "climate-co2-forecasting-ml",
@@ -283,7 +282,7 @@ export const projects: Project[] = [
     solution:
       "Built a reproducible benchmark across scikit-learn models and a PyTorch MLP, selected models on validation ROC-AUC, generated SHAP explanations and error analysis, exposed strict FastAPI schemas, and published a read-only React evidence dashboard.",
     outcome:
-      "Logistic Regression led the measured test results and produced one malignant-to-benign error with no benign-to-malignant errors on the shared held-out set. The site clearly states that the system is not clinically validated.",
+      "Logistic Regression led the measured test results and produced one malignant-to-benign error with no benign-to-malignant errors on the shared held-out set. The public site is a read-only frontend showcase, and the system is not clinically validated.",
     whatIBuilt:
       "An explainable tabular-ML workflow that connects model comparison, safety metrics, SHAP evidence, inference contracts, and a reviewer-facing dashboard.",
     whatItProves:
@@ -329,7 +328,7 @@ export const projects: Project[] = [
       "Improve calibration and threshold-selection analysis.",
       "Add model cards and versioned artifact provenance.",
     ],
-    sourceNote: "Repository README, measured reports, and public deployment reviewed June 13, 2026.",
+    sourceNote: "Repository README, measured reports, and public deployment reviewed June 14, 2026.",
   },
   {
     id: "thai-procurement-intelligence",
@@ -391,7 +390,7 @@ export const projects: Project[] = [
       "Add stronger provenance and confidence displays.",
       "Schedule incremental ingestion and data-quality monitoring.",
     ],
-    sourceNote: "Repository README and live deployment reviewed June 13, 2026.",
+    sourceNote: "Repository README and live deployment reviewed June 14, 2026.",
   },
 ];
 
