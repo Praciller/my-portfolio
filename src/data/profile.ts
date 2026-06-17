@@ -12,7 +12,7 @@ export const profile = {
   summary:
     "I am an AI Engineer at Seagate Technology building practical GenAI automation, internal engineering tools, and backend data workflows. My public projects demonstrate production-style thinking across retrieval, multimodal extraction, document analysis, forecasting, and explainable ML.",
   shortIntro:
-    "I turn support tickets, receipts, resumes, time-series data, and public records into maintainable applications with validated APIs, measurable evaluation, and usable interfaces.",
+    "AI Engineer building GenAI workflows, RAG systems, multimodal apps, backend APIs, and data platforms for real operational use cases.",
   targetRoles: ["AI Engineer", "GenAI Engineer", "Data Engineer"],
   proofPoints: [
     {
