@@ -41,7 +41,7 @@ export const projects: Project[] = [
     solution:
       "Built a typed seven-node LangGraph workflow that normalizes tickets, classifies intent, detects urgency, retrieves similar Banking77 cases from Qdrant, drafts a response, checks grounding, and recommends a human action. Provider-aware caching and Gemini, Groq, and Cerebras fallback keep the workflow usable when one model is unavailable.",
     outcome:
-      "Delivered a locally verified support-operations console with deterministic mock mode, semantic search, complete graph traces, provider health, and offline evaluation. The deployment work also identified model memory as the limiting factor on free hosting rather than an application correctness issue.",
+      "Delivered a public deterministic support-operations demo with semantic search, complete graph traces, grounded responses, and a verified live reviewer path on Hugging Face Spaces.",
     whatIBuilt:
       "A retrieval-grounded support triage system with observable agent steps, safe fallback behavior, and measurable evaluation.",
     whatItProves:
@@ -57,10 +57,11 @@ export const projects: Project[] = [
       "Docker",
     ],
     githubUrl: "https://github.com/Praciller/customer-support-rag-triage-agent",
+    liveDemoUrl: "https://pracill-customer-support-rag-triage-agent.hf.space/",
     screenshotUrl: "/images/projects/customer-support-rag-triage-agent.png",
     screenshotAlt: "Customer support RAG triage dashboard and workflow concept.",
     status: "completed",
-    presentationStatus: "Case study",
+    presentationStatus: "Demo available",
     flagship: true,
     tags: ["RAG", "LangGraph", "Qdrant", "Evaluation"],
     highlights: [
@@ -78,16 +79,16 @@ export const projects: Project[] = [
       "Grounding and next action",
     ],
     metricsOrLessons: [
-      "Uses 13,069 Banking77 support queries and preserves all 77 original labels while mapping them to nine operational intents.",
-      "Exposes a seven-node execution trace so reviewers can inspect classification, retrieval, generation, and verification.",
-      "Free-tier deployment testing showed that embedding-model memory must be treated as an infrastructure constraint.",
+      "Ships a 27-record CC BY 4.0 Banking77 fixture and an eight-ticket deterministic evaluation set.",
+      "Offline retrieval evaluation records 37.5% precision@5 and 100% recall@5.",
+      "Public smoke verification returned three matches, 86% top similarity, and all seven workflow nodes.",
     ],
     futureImprovements: [
       "Add a reranker and multilingual support.",
       "Ingest help-center policy documents with stronger provenance.",
       "Capture human feedback and response ratings for continuous evaluation.",
     ],
-    sourceNote: "Repository README, implementation, and deployment verification reviewed June 14, 2026.",
+    sourceNote: "Repository, evaluation artifacts, and public deployment verified June 21, 2026.",
   },
   {
     id: "receipt-ai-expense-tracker",
