@@ -18,18 +18,19 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://pakon-portfolio.vercel.app"),
   title: {
-    default: "Pakon Poomson | AI Engineer Portfolio",
+    default: "Pakon Poomson | AI Engineer & Data Engineer",
     template: "%s | Pakon Poomson",
   },
   description:
-    "Portfolio of Pakon Poomson, focused on AI engineering, data engineering, RAG systems, automation, and full-stack deployed applications.",
+    "AI Engineer and Data Engineer portfolio featuring reproducible data platforms, RAG evaluation, ML/MLOps, Thai NLP, and privacy-aware AI products.",
+  keywords: ["AI Engineer", "Data Engineer", "MLOps", "RAG", "Data Platform", "Thai NLP", "FastAPI", "React", "Next.js"],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Pakon Poomson | AI Engineer Portfolio",
+    title: "Pakon Poomson | AI Engineer & Data Engineer",
     description:
-      "Practical AI engineering, data systems, RAG workflows, automation, and deployed full-stack applications.",
+      "Reproducible data systems, ML workflows, RAG evaluation, Thai NLP, and privacy-aware AI applications.",
     url: "/",
     siteName: "Pakon Poomson Portfolio",
     images: [
@@ -45,9 +46,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pakon Poomson | AI Engineer Portfolio",
+    title: "Pakon Poomson | AI Engineer & Data Engineer",
     description:
-      "Practical AI engineering, data systems, RAG workflows, automation, and deployed full-stack applications.",
+      "Reproducible data systems, ML workflows, RAG evaluation, Thai NLP, and privacy-aware AI applications.",
     images: ["/opengraph-image"],
   },
 };

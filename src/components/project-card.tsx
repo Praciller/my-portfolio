@@ -40,7 +40,7 @@ export function ProjectCard({
             {project.presentationStatus}
           </span>
           <span className="font-mono text-[0.68rem] uppercase tracking-[0.1em] text-muted">
-            {project.techStack.slice(0, 3).join(" + ")}
+            {project.categoryLabel}
           </span>
         </div>
         <h3 className="mt-5 text-[clamp(1.6rem,3.5vw,2.65rem)] font-extrabold leading-[1.08] tracking-[-0.035em]">
@@ -50,6 +50,9 @@ export function ProjectCard({
         </h3>
         <p className="mt-4 max-w-2xl text-base leading-[1.7] text-muted">
           {project.description}
+        </p>
+        <p className="mt-3 max-w-2xl text-sm leading-[1.65] text-muted">
+          <strong className="font-bold text-foreground">Role signal:</strong> {project.roleSignal}
         </p>
       </div>
 

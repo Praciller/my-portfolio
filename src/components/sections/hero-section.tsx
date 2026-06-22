@@ -21,7 +21,7 @@ export function HeroSection() {
             </span>
             <span className="text-sm font-semibold text-muted">{profile.name}</span>
           </div>
-          <h1 className="mt-6 max-w-[16ch] text-[clamp(2.5rem,7vw,5.5rem)] font-extrabold leading-[0.98] tracking-[-0.055em] text-balance">
+          <h1 className="mt-6 max-w-[22ch] text-[clamp(2.5rem,6vw,4.75rem)] font-extrabold leading-[1] tracking-[-0.05em] text-balance">
             {profile.heroTitle}
           </h1>
           <p className="mt-7 max-w-[68ch] text-base leading-[1.75] text-muted sm:text-lg">

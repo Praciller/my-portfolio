@@ -8,7 +8,7 @@ import { aiEngineeringProjects, dataMlProjects } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "AI engineering, data, and machine learning projects by Pakon Poomson.",
+    "Data engineering, RAG, ML/MLOps, Thai NLP, multimodal AI, and public-data projects by Pakon Poomson.",
   alternates: {
     canonical: "/projects",
   },
@@ -23,11 +23,11 @@ export default function ProjectsPage() {
             Public engineering evidence
           </span>
           <h1 className="mt-6 max-w-4xl text-[clamp(3rem,8vw,5.5rem)] font-extrabold leading-[0.98] tracking-[-0.055em]">
-            Projects built beyond the prototype.
+            Technical evidence across data and AI systems.
           </h1>
           <p className="mt-7 max-w-[68ch] text-lg leading-[1.75] text-muted">
-            Six GitHub-backed case studies covering retrieval, multimodal AI,
-            validated document analysis, forecasting, explainable ML, and public-data systems.
+            Six GitHub-backed case studies covering data platforms, RAG evaluation,
+            ML/MLOps, multimodal extraction, Thai NLP governance, and public-data analytics.
           </p>
         </Reveal>
         <section className="mt-16">
@@ -36,7 +36,7 @@ export default function ProjectsPage() {
               AI Engineering
             </h2>
             <p className="mt-3 max-w-[68ch] text-base leading-[1.7] text-muted">
-              Agentic RAG, multimodal extraction, and validated document-analysis products.
+              RAG systems, multimodal extraction, and Thai NLP governance workflows.
             </p>
           </Reveal>
           <div className="mt-10">
@@ -58,7 +58,7 @@ export default function ProjectsPage() {
               Data &amp; ML
             </h2>
             <p className="mt-3 max-w-[68ch] text-base leading-[1.7] text-muted">
-              Reproducible forecasting, explainable classification, and public-data intelligence.
+              Local-first data platforms, reproducible forecasting, and public-data intelligence.
             </p>
           </Reveal>
           <div className="mt-10">

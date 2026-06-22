@@ -17,11 +17,23 @@ describe("portfolio content contract", () => {
   it("ships the six approved GitHub-backed portfolio projects", () => {
     assert.equal(projects.length, 6);
     assert.ok(projects.every((project) => project.githubUrl?.startsWith("https://github.com/Praciller/")));
+    assert.deepEqual(projects.map((project) => project.slug), [
+      "urban-mobility-data-platform",
+      "customer-support-rag-triage-agent",
+      "climate-co2-forecasting-ml",
+      "receipt-ai-expense-tracker",
+      "thai-review-sentiment-intelligence",
+      "thai-procurement-intelligence",
+    ]);
     assert.ok(projects.every((project) => project.problem && project.solution && project.outcome));
     assert.ok(projects.every((project) => project.whatIBuilt && project.whatItProves));
-    assert.ok(projects.every((project) => project.screenshotUrl.startsWith("/images/projects/")));
+    assert.ok(projects.every((project) => !project.screenshotUrl || project.screenshotUrl.startsWith("/images/projects/")));
     assert.ok(projects.every((project) => project.presentationStatus));
-    assert.equal(projects.filter((project) => project.flagship).length, 3);
+    assert.ok(projects.every((project) => project.featured));
+    assert.ok(projects.every((project) => project.roleSignal && project.categoryLabel));
+    assert.ok(projects.every((project) => project.verificationEvidence.length > 0));
+    assert.ok(projects.every((project) => project.securityPrivacy.length > 0));
+    assert.ok(projects.every((project) => project.limitations.length > 0));
   });
 
   it("uses unique project slugs for detail routes", () => {
@@ -40,11 +52,11 @@ describe("portfolio content contract", () => {
     assert.deepEqual(
       skillGroups.map((group) => group.category),
       [
-        "AI & Retrieval",
-        "Frontend",
-        "Backend & APIs",
-        "Data & Infrastructure",
-        "Delivery & Operations",
+        "Data Engineering",
+        "AI Systems",
+        "ML/MLOps",
+        "Full Stack",
+        "Thai AI/Data",
       ],
     );
     assert.ok(skillGroups.every((group) => group.skills.length >= 5));

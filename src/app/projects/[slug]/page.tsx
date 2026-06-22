@@ -96,7 +96,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               Project type
             </dt>
             <dd className="mt-2 text-sm font-bold">
-              {project.category === "ai-engineering" ? "AI engineering" : "Data and ML"}
+              {project.categoryLabel}
             </dd>
           </div>
           <div className="border-b border-border p-5 sm:border-b-0 sm:border-r">
@@ -140,6 +140,14 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <p className="mt-4 max-w-[72ch] text-base leading-[1.75] text-muted">
                 {project.solution}
               </p>
+            </section>
+            <section>
+              <h3 className="text-xl font-extrabold tracking-[-0.02em]">Technical Decisions</h3>
+              <ul className="mt-5 grid gap-3 text-base leading-[1.7] text-muted">
+                {project.technicalDecisions.map((decision) => (
+                  <li key={decision} className="border-t border-border-soft pt-4">{decision}</li>
+                ))}
+              </ul>
             </section>
             <section>
               <h3 className="text-xl font-extrabold tracking-[-0.02em]">Outcome</h3>
@@ -188,14 +196,28 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               </ul>
             </section>
             <section>
-              <h3 className="text-xl font-extrabold tracking-[-0.02em]">
-                Challenges &amp; Trade-offs
-              </h3>
+              <h3 className="text-xl font-extrabold tracking-[-0.02em]">Verification</h3>
               <ul className="mt-5 grid gap-3 text-base leading-[1.7] text-muted">
-                {project.metricsOrLessons.map((entry) => (
+                {project.verificationEvidence.map((entry) => (
                   <li key={entry} className="border-t border-border-soft pt-4">
                     {entry}
                   </li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h3 className="text-xl font-extrabold tracking-[-0.02em]">Security &amp; Privacy</h3>
+              <ul className="mt-5 grid gap-3 text-base leading-[1.7] text-muted">
+                {project.securityPrivacy.map((entry) => (
+                  <li key={entry} className="border-t border-border-soft pt-4">{entry}</li>
+                ))}
+              </ul>
+            </section>
+            <section>
+              <h3 className="text-xl font-extrabold tracking-[-0.02em]">Limitations</h3>
+              <ul className="mt-5 grid gap-3 text-base leading-[1.7] text-muted">
+                {project.limitations.map((entry) => (
+                  <li key={entry} className="border-t border-border-soft pt-4">{entry}</li>
                 ))}
               </ul>
             </section>

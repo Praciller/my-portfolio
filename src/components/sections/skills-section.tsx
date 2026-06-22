@@ -11,19 +11,19 @@ import { Section } from "@/components/ui/section";
 import { skillGroups } from "@/data/skills";
 
 const skillIcons = {
-  "AI & Retrieval": Bot,
-  Frontend: MonitorSmartphone,
-  "Backend & APIs": ServerCog,
-  "Data & Infrastructure": Database,
-  "Delivery & Operations": CloudCog,
+  "Data Engineering": Database,
+  "AI Systems": Bot,
+  "ML/MLOps": CloudCog,
+  "Full Stack": ServerCog,
+  "Thai AI/Data": MonitorSmartphone,
 } as const;
 
 export function SkillsSection() {
   return (
     <Section
       id="capabilities"
-      title="Capabilities"
-      intro="The stack behind the public case studies, grouped by the work it enables."
+      title="Technical Focus"
+      intro="Core engineering areas demonstrated by the public project evidence."
       tone="soft"
     >
       <div className="grid gap-x-10 gap-y-6 md:grid-cols-2">

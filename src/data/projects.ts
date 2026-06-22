@@ -6,408 +6,284 @@ export type Project = {
   title: string;
   slug: string;
   category: ProjectCategory;
+  categoryLabel: string;
   description: string;
   problem: string;
   solution: string;
   outcome: string;
   whatIBuilt: string;
   whatItProves: string;
+  roleSignal: string;
   techStack: string[];
   githubUrl: string;
   liveDemoUrl?: string;
-  screenshotUrl: string;
+  screenshotUrl?: string;
   screenshotAlt: string;
   status: ProjectStatus;
   presentationStatus: "Case study" | "Demo available" | "Frontend showcase";
-  flagship: boolean;
+  featured: boolean;
+  priority: number;
   tags: string[];
   highlights: string[];
   architecture: string[];
-  metricsOrLessons: string[];
+  technicalDecisions: string[];
+  verificationEvidence: string[];
+  securityPrivacy: string[];
+  limitations: string[];
   futureImprovements: string[];
   sourceNote: string;
 };
 
-export const projects: Project[] = [
+export const projects = ([
+  {
+    id: "urban-mobility-data-platform",
+    title: "Urban Mobility Data Platform",
+    slug: "urban-mobility-data-platform",
+    category: "data-ml",
+    categoryLabel: "Data Engineering / Analytics Platform",
+    description:
+      "Local-first data engineering and analytics platform for urban mobility datasets.",
+    problem:
+      "Mobility data projects need a reproducible path from raw inputs to trustworthy analytical outputs without requiring reviewers to provision cloud infrastructure.",
+    solution:
+      "Built a deterministic sample pipeline with data validation, DuckDB and dbt-style analytical modeling, an API, and a reviewer-facing dashboard.",
+    outcome:
+      "The repository provides a local review path with pipeline guardrails, analytical outputs, API and frontend surfaces, tests, and CI checks.",
+    whatIBuilt:
+      "A local-first data platform connecting ingestion, validation, analytical modeling, APIs, and dashboard evidence.",
+    whatItProves:
+      "Data pipelines, SQL modeling, reproducibility, API delivery, frontend integration, and CI-safe engineering.",
+    roleSignal:
+      "Data pipelines, analytical modeling, API/dashboard delivery, and CI-safe reproducibility.",
+    techStack: ["Python", "DuckDB", "dbt-style SQL", "FastAPI", "React", "CI", "Data validation"],
+    githubUrl: "https://github.com/Praciller/urban-mobility-data-platform",
+    screenshotAlt: "Abstract system view for the urban mobility data platform.",
+    status: "completed",
+    presentationStatus: "Case study",
+    featured: true,
+    priority: 1,
+    tags: ["Data engineering", "DuckDB", "Analytics", "Local-first"],
+    highlights: [
+      "Deterministic sample pipeline keeps the reviewer path reproducible.",
+      "Validation and guardrails protect the analytical model inputs.",
+      "API and dashboard surfaces expose modeled data for inspection.",
+    ],
+    architecture: [
+      "Sample mobility data",
+      "Validation and ingestion",
+      "DuckDB storage",
+      "dbt-style SQL models",
+      "FastAPI service",
+      "React dashboard",
+      "CI guardrails",
+    ],
+    technicalDecisions: [
+      "Local-first defaults avoid cloud accounts and private infrastructure in the review path.",
+      "Deterministic fixtures make pipeline behavior repeatable in development and CI.",
+    ],
+    verificationEvidence: ["Deterministic sample pipeline", "Automated tests and CI", "Repository readiness guardrails"],
+    securityPrivacy: ["No real private mobility data is required for the default workflow.", "Local artifacts and environment files remain outside version control."],
+    limitations: ["The portfolio links to the repository rather than claiming a public live deployment.", "Sample data demonstrates the pipeline contract, not production scale."],
+    futureImprovements: ["Add approved production-scale sources when available.", "Expand data-quality monitoring for larger datasets."],
+    sourceNote: "Claims limited to the public repository and its documented local verification path.",
+  },
   {
     id: "customer-support-rag-triage-agent",
     title: "Customer Support RAG Triage Agent",
     slug: "customer-support-rag-triage-agent",
     category: "ai-engineering",
+    categoryLabel: "RAG / AI Agent Systems",
     description:
-      "Support teams need consistent ticket triage, relevant evidence, and grounded draft responses without relying on a generic chatbot.",
+      "Offline-capable RAG triage system for support tickets with grounded responses.",
     problem:
-      "High-volume support queues mix intent classification, urgency assessment, retrieval, response drafting, and escalation decisions. Treating this as one unconstrained chat prompt makes the workflow difficult to inspect, evaluate, and operate safely.",
+      "Support triage combines classification, retrieval, response drafting, and escalation decisions that need to remain inspectable and safely bounded.",
     solution:
-      "Built a typed seven-node LangGraph workflow that normalizes tickets, classifies intent, detects urgency, retrieves similar Banking77 cases from Qdrant, drafts a response, checks grounding, and recommends a human action. Provider-aware caching and Gemini, Groq, and Cerebras fallback keep the workflow usable when one model is unavailable.",
+      "Built a typed workflow for ticket normalization, intent and urgency handling, retrieval, grounded answer generation, source checks, and safe fallback behavior.",
     outcome:
-      "Delivered a public deterministic support-operations demo with semantic search, complete graph traces, grounded responses, and a verified live reviewer path on Hugging Face Spaces.",
+      "The project provides an API contract, a deterministic offline path, evaluation artifacts, guardrails, and a public reviewer demo.",
     whatIBuilt:
-      "A retrieval-grounded support triage system with observable agent steps, safe fallback behavior, and measurable evaluation.",
+      "A retrieval-grounded support triage workflow with observable steps, citations, evaluation, and fallback behavior.",
     whatItProves:
-      "RAG architecture, LangGraph orchestration, vector retrieval, provider routing, evaluation design, FastAPI, React, Docker, and deployment troubleshooting.",
-    techStack: [
-      "Python",
-      "FastAPI",
-      "LangGraph",
-      "Qdrant",
-      "BGE embeddings",
-      "React",
-      "TypeScript",
-      "Docker",
-    ],
+      "Retrieval, ranking, grounded generation, guardrails, offline evaluation, API contracts, and full-stack delivery.",
+    roleSignal: "Retrieval, ranking, guardrails, evaluation, and API contracts.",
+    techStack: ["Python", "FastAPI", "RAG", "LangGraph", "Qdrant", "React", "TypeScript", "Evaluation"],
     githubUrl: "https://github.com/Praciller/customer-support-rag-triage-agent",
     liveDemoUrl: "https://pracill-customer-support-rag-triage-agent.hf.space/",
     screenshotUrl: "/images/projects/customer-support-rag-triage-agent.png",
-    screenshotAlt: "Customer support RAG triage dashboard and workflow concept.",
+    screenshotAlt: "Customer support RAG triage dashboard and workflow.",
     status: "completed",
     presentationStatus: "Demo available",
-    flagship: true,
-    tags: ["RAG", "LangGraph", "Qdrant", "Evaluation"],
+    featured: true,
+    priority: 2,
+    tags: ["RAG", "Grounding", "Evaluation", "Guardrails"],
     highlights: [
-      "Fixed support workflow with typed state instead of an open-ended chatbot loop.",
-      "Cache-first multi-provider routing with bounded retries and safe degraded output.",
-      "Grounding checks, escalation logic, provider health, and end-to-end trace visibility.",
+      "Typed workflow state keeps triage behavior inspectable.",
+      "Grounding and source checks constrain generated responses.",
+      "Offline evaluation and deterministic fallbacks preserve a stable review path.",
     ],
-    architecture: [
-      "React operations console",
-      "FastAPI service",
-      "LangGraph workflow",
-      "Qdrant retrieval",
-      "Local BGE embeddings",
-      "LLM cache and provider router",
-      "Grounding and next action",
-    ],
-    metricsOrLessons: [
-      "Ships a 27-record CC BY 4.0 Banking77 fixture and an eight-ticket deterministic evaluation set.",
-      "Offline retrieval evaluation records 37.5% precision@5 and 100% recall@5.",
-      "Public smoke verification returned three matches, 86% top similarity, and all seven workflow nodes.",
-    ],
-    futureImprovements: [
-      "Add a reranker and multilingual support.",
-      "Ingest help-center policy documents with stronger provenance.",
-      "Capture human feedback and response ratings for continuous evaluation.",
-    ],
-    sourceNote: "Repository, evaluation artifacts, and public deployment verified June 21, 2026.",
-  },
-  {
-    id: "receipt-ai-expense-tracker",
-    title: "Receipt AI Expense Tracker",
-    slug: "receipt-ai-expense-tracker",
-    category: "ai-engineering",
-    description:
-      "Manual expense entry is slow and error-prone when receipts mix Thai and English text, inconsistent layouts, and Buddhist Era dates.",
-    problem:
-      "Receipt images contain semi-structured financial data that must be extracted, normalized, reviewed, and stored without exposing provider credentials or silently persisting incorrect AI output.",
-    solution:
-      "Built a local-first Next.js application with a capability-aware AI router, structured Zod validation, Buddhist Era date normalization, editable human review, IndexedDB persistence through Dexie, and client-side spending analytics.",
-    outcome:
-      "The full product flow works without a database or account. AI parsing returns review data only; users explicitly confirm each receipt before it enters the local ledger and dashboard. The public deployment uses deterministic mock AI until server-side provider keys are configured.",
-    whatIBuilt:
-      "A multimodal receipt-to-expense workflow with safe provider routing, human review, local persistence, and analytics.",
-    whatItProves:
-      "Multimodal AI product design, Thai/English normalization, schema enforcement, local-first architecture, Next.js, IndexedDB, and testable provider fallback.",
-    techStack: [
-      "Next.js 16",
-      "React 19",
-      "TypeScript",
-      "Gemini",
-      "Groq",
-      "Cerebras",
-      "Zod",
-      "Dexie",
-      "Recharts",
-    ],
-    githubUrl: "https://github.com/Praciller/receipt-ai-expense-tracker",
-    liveDemoUrl: "https://receipt-ai-expense-tracker-eta.vercel.app/",
-    screenshotUrl: "/images/projects/receipt-ai-expense-tracker.png",
-    screenshotAlt: "Receipt expense tracker dashboard with totals, categories, and receipt history.",
-    status: "completed",
-    presentationStatus: "Demo available",
-    flagship: true,
-    tags: ["Multimodal AI", "Local-first", "Thai/English", "Analytics"],
-    highlights: [
-      "Image-capability filtering prevents receipt images from being sent to text-only providers.",
-      "Zod validation rejects impossible dates, negative totals, and malformed receipt structures.",
-      "Reviewed records stay in the browser through a repository abstraction backed by Dexie.",
-    ],
-    architecture: [
-      "Receipt upload",
-      "Server-side AI router",
-      "Structured extraction",
-      "Zod normalization",
-      "Human review",
-      "IndexedDB repository",
-      "Analytics dashboard",
-    ],
-    metricsOrLessons: [
-      "Buddhist Era dates such as 2568 normalize to Gregorian year 2025.",
-      "AI parsing never saves automatically; persistence requires explicit user confirmation.",
-      "Mock mode preserves the full validation and review path without spending provider quota.",
-    ],
-    futureImprovements: [
-      "Add encrypted export and import for local ledgers.",
-      "Add duplicate receipt detection and batch upload.",
-      "Expose field-level confidence and review history.",
-    ],
-    sourceNote: "Repository README, tests, and public deployment reviewed June 14, 2026.",
-  },
-  {
-    id: "ai-resume-matcher",
-    title: "AI Resume Matcher",
-    slug: "ai-resume-matcher",
-    category: "ai-engineering",
-    description:
-      "Candidates need an evidence-based way to compare a PDF resume with a job description and identify actionable gaps.",
-    problem:
-      "Resume and job-description matching combines unsafe file input, unstructured text, model variability, and complex output that can break a frontend when schemas are weak.",
-    solution:
-      "Modernized the product into a React and FastAPI application with PDF validation, bounded extraction, 9arm-first provider routing, Gemini/Groq/Cerebras fallback, strict Pydantic output models, deterministic mock mode, caching, and safe report rendering.",
-    outcome:
-      "The deployed application returns a validated report with fit score, evidence, missing skills, recommendations, learning priorities, interview questions, risk flags, provider metadata, and warnings. Its deterministic sample flow remains usable without provider credentials.",
-    whatIBuilt:
-      "A validated document-analysis pipeline that converts a PDF resume and job description into a structured career report.",
-    whatItProves:
-      "Production-minded AI APIs, provider abstraction, Pydantic contracts, secure file handling, React reporting, automated testing, and Vercel delivery.",
-    techStack: [
-      "React",
-      "Vite",
-      "FastAPI",
-      "Python",
-      "Pydantic",
-      "pypdf",
-      "9arm",
-      "Gemini",
-      "Groq",
-      "Cerebras",
-    ],
-    githubUrl: "https://github.com/Praciller/ai-resume-matcher",
-    liveDemoUrl: "https://ai-resume-matcher-psi-one.vercel.app",
-    screenshotUrl: "/images/projects/ai-resume-matcher.png",
-    screenshotAlt: "Structured AI resume analysis report with score, strengths, gaps, and recommendations.",
-    status: "completed",
-    presentationStatus: "Demo available",
-    flagship: false,
-    tags: ["Document AI", "FastAPI", "Provider routing", "Career tooling"],
-    highlights: [
-      "Validates extension, MIME type, size, extractable text, and job-description length.",
-      "Rejects malformed or low-quality model output before it reaches the UI.",
-      "Supports deterministic sample and mock flows for reliable demos and tests.",
-    ],
-    architecture: [
-      "PDF and job description",
-      "React validation",
-      "FastAPI upload endpoint",
-      "PDF extraction",
-      "Provider router",
-      "Pydantic validation",
-      "Structured report",
-    ],
-    metricsOrLessons: [
-      "Uses a strict schema for scores, evidence, gaps, actions, learning plans, interview questions, and risk flags.",
-      "Provider keys remain server-side and no frontend secret variables are required.",
-      "The same FastAPI application supports local development and Vercel serverless deployment.",
-    ],
-    futureImprovements: [
-      "Add OCR for scanned resumes.",
-      "Calibrate score interpretation against a labeled evaluation set.",
-      "Add comparison and export workflows for multiple target roles.",
-    ],
-    sourceNote: "Repository README, verification docs, and public deployment reviewed June 14, 2026.",
+    architecture: ["Ticket input", "Intent and urgency", "Retrieval", "Ranking", "Grounded generation", "Source checks", "Human action"],
+    technicalDecisions: ["A fixed workflow replaces an open-ended agent loop.", "Provider failures degrade to bounded output rather than bypassing guardrails."],
+    verificationEvidence: ["Offline deterministic demo", "Retrieval and grounding evaluation", "API contract checks"],
+    securityPrivacy: ["Provider credentials remain server-side.", "Guardrails and escalation preserve human review for uncertain output."],
+    limitations: ["The bundled support corpus is a review fixture, not a private production knowledge base.", "Generated drafts still require policy-aware human review."],
+    futureImprovements: ["Add stronger reranking and multilingual retrieval.", "Capture structured reviewer feedback for evaluation."],
+    sourceNote: "Repository, evaluation artifacts, and public deployment are the evidence sources.",
   },
   {
     id: "climate-co2-forecasting-ml",
     title: "Climate CO2 Forecasting ML",
     slug: "climate-co2-forecasting-ml",
     category: "data-ml",
+    categoryLabel: "ML/MLOps / Forecasting",
     description:
-      "Atmospheric CO2 forecasting needs leakage-safe time-series evaluation rather than a visually impressive model trained on future information.",
+      "Local-first forecasting and MLOps demo with backtesting and interval monitoring.",
     problem:
-      "The weekly Mauna Loa CO2 series contains missing values, long-term trend, and strong annual seasonality. A credible project must compare simple and complex models on the same chronological holdout.",
+      "Time-series models can appear strong when evaluation leaks future information or compares models on inconsistent windows.",
     solution:
-      "Built a reproducible pipeline for validation, monthly resampling, chronological splits, feature engineering, baseline/statistical/scikit-learn/PyTorch training, shared metrics, residual analysis, anomaly signals, FastAPI inference, and a React dashboard.",
+      "Built a reproducible forecasting workflow with leakage-safe rolling backtesting, interval evaluation, experiment tracking, registry-style metadata, API contracts, and a frontend evidence view.",
     outcome:
-      "Exponential Smoothing and SARIMA clearly outperformed the more complex machine-learning models. The project reports that result directly and keeps anomaly detection framed as exploratory rather than verified climate-event detection.",
+      "The project keeps model comparison reproducible and reports limitations instead of treating model complexity as evidence of quality.",
     whatIBuilt:
-      "An end-to-end forecasting and anomaly-analysis system with reproducible data preparation, model comparison, API serving, and dashboard evidence.",
+      "A forecasting workflow spanning validation, backtesting, interval monitoring, experiment evidence, serving, and visualization.",
     whatItProves:
-      "Time-series methodology, leakage prevention, honest model evaluation, statistical forecasting, PyTorch experimentation, FastAPI, React, and reproducibility.",
-    techStack: [
-      "Python",
-      "pandas",
-      "statsmodels",
-      "scikit-learn",
-      "PyTorch",
-      "FastAPI",
-      "React",
-      "Recharts",
-      "Docker",
-    ],
+      "Time-series validation, model comparison, experiment tracking, model metadata, API delivery, and honest ML communication.",
+    roleSignal: "Time-series validation, model registry metadata, and experiment tracking.",
+    techStack: ["Python", "Forecasting", "Backtesting", "Intervals", "FastAPI", "React", "Experiment tracking"],
     githubUrl: "https://github.com/Praciller/climate-co2-forecasting-ml",
     screenshotUrl: "/images/projects/climate-co2-forecasting-ml.png",
-    screenshotAlt: "CO2 Forecast Lab dashboard showing model comparison and atmospheric trend.",
+    screenshotAlt: "CO2 forecasting dashboard with model comparison and atmospheric trend.",
     status: "completed",
     presentationStatus: "Case study",
-    flagship: true,
-    tags: ["Forecasting", "Time series", "Evaluation", "Anomaly detection"],
-    highlights: [
-      "Chronological train, validation, and test splits prevent future leakage.",
-      "All models share the same rolling one-step evaluation and residual analysis.",
-      "Generated artifacts feed both the FastAPI service and React dashboard.",
-    ],
-    architecture: [
-      "statsmodels CO2 dataset",
-      "Validation and resampling",
-      "Chronological split",
-      "Forecasting models",
-      "Shared evaluation",
-      "Anomaly analysis",
-      "API and dashboard",
-    ],
-    metricsOrLessons: [
-      "2,284 weekly rows become 526 monthly observations after resampling and interpolation.",
-      "Exponential Smoothing achieved MAE 0.237 and RMSE 0.298 on rolling one-step evaluation.",
-      "The two-epoch LSTM debug run underperformed, demonstrating that complexity is not automatically better.",
-    ],
-    futureImprovements: [
-      "Run a fully tuned LSTM experiment separately from the fast debug pipeline.",
-      "Add probabilistic forecast intervals and backtesting windows.",
-      "Deploy the API and dashboard together for a public interactive demo.",
-    ],
-    sourceNote: "Repository README, generated metrics, and public GitHub presentation reviewed June 13, 2026.",
+    featured: true,
+    priority: 3,
+    tags: ["Forecasting", "MLOps", "Backtesting", "Intervals"],
+    highlights: ["Rolling-origin evaluation prevents future leakage.", "Interval monitoring complements point forecasts.", "Experiment and registry metadata connect training evidence to serving."],
+    architecture: ["CO2 dataset", "Validation", "Rolling backtest", "Model comparison", "Interval evaluation", "Registry metadata", "API and frontend"],
+    technicalDecisions: ["Chronological evaluation is shared across model families.", "The local deterministic demo remains separate from optional hosted infrastructure."],
+    verificationEvidence: ["Leakage-safe rolling backtesting", "Interval evaluation", "Offline deterministic demo and API checks"],
+    securityPrivacy: ["The workflow uses public climate data and requires no private user data.", "Environment-specific credentials are not part of the default review path."],
+    limitations: ["Forecast results are an educational engineering demonstration, not climate-policy guidance.", "Public repository evidence is provided without claiming a live full-stack deployment."],
+    futureImprovements: ["Extend probabilistic forecast calibration.", "Compare additional rolling windows and drift signals."],
+    sourceNote: "Claims limited to documented repository artifacts and reproducible local outputs.",
   },
   {
-    id: "explainable-cancer-diagnosis-ml",
-    title: "Explainable Cancer Diagnosis ML",
-    slug: "explainable-cancer-diagnosis-ml",
-    category: "data-ml",
+    id: "receipt-ai-expense-tracker",
+    title: "Receipt AI Expense Tracker",
+    slug: "receipt-ai-expense-tracker",
+    category: "ai-engineering",
+    categoryLabel: "Multimodal AI Product",
     description:
-      "A medical ML portfolio project must show error costs, explainability, and strict limitations instead of presenting accuracy alone.",
+      "Privacy-aware Thai and English receipt extraction app with a local-first review workflow.",
     problem:
-      "Breast-cancer classification requires leakage-safe comparison, safety-relevant metrics, inspection of false negatives, and clear separation between educational evidence and clinical claims.",
+      "Receipt extraction must handle multilingual text, Buddhist Era dates, inconsistent layouts, and unsafe model output without silently saving incorrect financial records.",
     solution:
-      "Built a reproducible benchmark across scikit-learn models and a PyTorch MLP, selected models on validation ROC-AUC, generated SHAP explanations and error analysis, exposed strict FastAPI schemas, and published a read-only React evidence dashboard.",
+      "Built a Next.js application with capability-aware provider routing, strict schema validation, Buddhist Era normalization, editable review, and IndexedDB persistence.",
     outcome:
-      "Logistic Regression led the measured test results and produced one malignant-to-benign error with no benign-to-malignant errors on the shared held-out set. The public site is a read-only frontend showcase, and the system is not clinically validated.",
+      "Users explicitly review extracted data before it enters the local ledger, while deterministic mock extraction keeps the product flow testable without provider credentials.",
     whatIBuilt:
-      "An explainable tabular-ML workflow that connects model comparison, safety metrics, SHAP evidence, inference contracts, and a reviewer-facing dashboard.",
+      "A multimodal receipt-to-expense workflow with schema validation, human review, local storage, and provider guardrails.",
     whatItProves:
-      "Explainable ML, model governance, classification metrics, error analysis, scikit-learn, PyTorch, SHAP, FastAPI, React, and responsible communication.",
-    techStack: [
-      "Python",
-      "scikit-learn",
-      "PyTorch",
-      "SHAP",
-      "FastAPI",
-      "React",
-      "TypeScript",
-      "Docker",
-    ],
-    githubUrl: "https://github.com/Praciller/explainable-cancer-diagnosis-ml",
-    liveDemoUrl: "https://explainable-cancer-diagnosis-ml.vercel.app",
-    screenshotUrl: "/images/projects/explainable-cancer-diagnosis-ml.png",
-    screenshotAlt: "Explainable cancer diagnosis dashboard with measured model results and disclaimer.",
+      "Multimodal extraction, Thai and English normalization, provider routing, local-first data design, and privacy-aware product engineering.",
+    roleSignal: "Multimodal extraction, schema validation, provider routing, and IndexedDB.",
+    techStack: ["Next.js", "TypeScript", "Zod", "IndexedDB", "AI provider routing", "Privacy guardrails"],
+    githubUrl: "https://github.com/Praciller/receipt-ai-expense-tracker",
+    liveDemoUrl: "https://receipt-ai-expense-tracker-eta.vercel.app/",
+    screenshotUrl: "/images/projects/receipt-ai-expense-tracker.png",
+    screenshotAlt: "Receipt expense tracker dashboard with totals, categories, and receipt history.",
     status: "completed",
-    presentationStatus: "Frontend showcase",
-    flagship: false,
-    tags: ["Explainable ML", "SHAP", "Classification", "Responsible AI"],
-    highlights: [
-      "Shared stratified split and validation-driven model selection.",
-      "Sensitivity, specificity, ROC-AUC, confusion matrix, and threshold analysis.",
-      "Strict 30-feature inference schema and explicit medical disclaimer.",
-    ],
-    architecture: [
-      "scikit-learn dataset",
-      "Validation and split",
-      "Model training",
-      "Shared test evaluation",
-      "SHAP and error analysis",
-      "FastAPI contracts",
-      "React evidence dashboard",
-    ],
-    metricsOrLessons: [
-      "Uses 569 rows and 30 numeric features from the Wisconsin Diagnostic Breast Cancer dataset.",
-      "Logistic Regression achieved 0.9884 accuracy and 0.9954 ROC-AUC on the 86-row test set.",
-      "One malignant sample was classified as benign, reinforcing why aggregate accuracy is insufficient.",
-    ],
-    futureImprovements: [
-      "Add external validation on a meaningfully different dataset.",
-      "Improve calibration and threshold-selection analysis.",
-      "Add model cards and versioned artifact provenance.",
-    ],
-    sourceNote: "Repository README, measured reports, and public deployment reviewed June 14, 2026.",
+    presentationStatus: "Demo available",
+    featured: true,
+    priority: 4,
+    tags: ["Multimodal AI", "Thai/English", "Local-first", "Validation"],
+    highlights: ["Provider capability checks prevent images from reaching text-only routes.", "Strict schemas validate extracted receipt records.", "Explicit human confirmation is required before IndexedDB persistence."],
+    architecture: ["Receipt upload", "Provider router", "Structured extraction", "Schema validation", "Human review", "IndexedDB", "Local analytics"],
+    technicalDecisions: ["Local persistence avoids a required account or cloud database.", "Mock extraction exercises the same validation and review contract as provider output."],
+    verificationEvidence: ["Synthetic extraction evaluation", "Schema-validation tests", "Deterministic mock workflow"],
+    securityPrivacy: ["Receipt data stays local after review.", "Provider keys remain server-side and AI output is never saved automatically."],
+    limitations: ["Browser-local storage is device-specific and is not a synchronized backup.", "Extraction accuracy depends on image quality and provider capability."],
+    futureImprovements: ["Add encrypted export and import.", "Expose field-level confidence and duplicate detection."],
+    sourceNote: "Repository, tests, and the existing public deployment are the evidence sources.",
+  },
+  {
+    id: "thai-review-sentiment-intelligence",
+    title: "Thai Review Sentiment Intelligence",
+    slug: "thai-review-sentiment-intelligence",
+    category: "ai-engineering",
+    categoryLabel: "Thai NLP / ML Governance",
+    description:
+      "Thai sentiment intelligence platform with governance, confidence routing, and a monitoring demo.",
+    problem:
+      "Sentiment predictions need transparent confidence handling, review queues, and monitoring when uncertain Thai-language inputs affect downstream decisions.",
+    solution:
+      "Built a Thai NLP workflow with classification, confidence routing, human review, explainability metadata, monitoring, and an active-learning queue.",
+    outcome:
+      "The project exposes model behavior and governance evidence instead of presenting classification output as an unquestioned decision.",
+    whatIBuilt:
+      "A Thai sentiment workflow connecting inference, confidence-aware routing, human review, monitoring, and governance reports.",
+    whatItProves:
+      "Thai NLP, ML governance, explainability metadata, monitoring, feedback queues, FastAPI, and React delivery.",
+    roleSignal: "Thai NLP, model governance, explainability metadata, and active-learning workflows.",
+    techStack: ["Python", "scikit-learn", "FastAPI", "React", "Thai NLP", "Monitoring"],
+    githubUrl: "https://github.com/Praciller/thai-review-sentiment-intelligence",
+    screenshotAlt: "Abstract system view for Thai sentiment governance and review.",
+    status: "completed",
+    presentationStatus: "Case study",
+    featured: true,
+    priority: 5,
+    tags: ["Thai NLP", "Governance", "Monitoring", "Human review"],
+    highlights: ["Confidence routing sends uncertain predictions to human review.", "Explainability metadata accompanies model output.", "Monitoring and active-learning queues turn feedback into governance evidence."],
+    architecture: ["Thai review", "Text preprocessing", "Classifier", "Confidence routing", "Human review", "Monitoring", "Active-learning queue"],
+    technicalDecisions: ["A deterministic classical ML baseline keeps behavior inspectable.", "Low-confidence output is routed for review instead of forced into automation."],
+    verificationEvidence: ["Model evaluation artifacts", "Monitoring demo", "Governance and active-learning reports"],
+    securityPrivacy: ["The public workflow does not require private customer review data.", "Human review remains part of the decision path for uncertain predictions."],
+    limitations: ["Sentiment labels simplify context such as sarcasm, mixed sentiment, and domain-specific language.", "The portfolio links to repository evidence without claiming a public deployment."],
+    futureImprovements: ["Expand evaluation across domains and language variation.", "Calibrate confidence thresholds with reviewer feedback."],
+    sourceNote: "Claims limited to the public repository and its documented reports and demo workflow.",
   },
   {
     id: "thai-procurement-intelligence",
     title: "Thai Procurement Intelligence",
     slug: "thai-procurement-intelligence",
     category: "data-ml",
+    categoryLabel: "Public Data / Procurement Analytics",
     description:
-      "Thai public procurement records are difficult to search, compare, and explain when data is multilingual, high-volume, and inconsistently structured.",
+      "Public procurement intelligence project using an official DGA procurement snapshot.",
     problem:
-      "A useful procurement intelligence product needs ingestion, normalization, search, analytics, provenance, and evidence-backed answers while clearly distinguishing synthetic demo data from official records.",
+      "Procurement analysis needs source provenance, quality checks, bilingual evidence, and clear dataset-state communication before records can support credible comparisons.",
     solution:
-      "Built a Next.js and FastAPI platform with CSV/JSON ingestion, SQLAlchemy persistence, PostgreSQL/pgvector schemas, keyword/semantic/hybrid retrieval, bilingual UI, dashboards, exports, optional Gemini/OpenRouter summarization, and cited assistant answers.",
+      "Built provenance-aware ingestion and validation around an official DGA procurement snapshot, with bilingual evidence views, quality reports, security controls, and CI validation.",
     outcome:
-      "The public demo serves 120 clearly labeled synthetic records and preserves useful search, dashboard, detail, export, assistant, and data-readiness workflows without pretending the sample data is official.",
+      "The project separates official and demonstration data states and routes users from analytics back to source-aware evidence.",
     whatIBuilt:
-      "A bilingual public-data intelligence platform spanning ingestion, normalized storage, retrieval, analytics, and evidence-backed Q&A.",
+      "A bilingual public-data analytics workflow spanning official-source ingestion, provenance, validation, evidence views, and quality reporting.",
     whatItProves:
-      "Data engineering, public-data product design, PostgreSQL/pgvector, FastAPI, Next.js, bilingual UX, LLM integration, and transparent data limitations.",
-    techStack: [
-      "Next.js",
-      "TypeScript",
-      "FastAPI",
-      "Python",
-      "PostgreSQL",
-      "pgvector",
-      "SQLAlchemy",
-      "Gemini",
-      "OpenRouter",
-      "Docker",
-    ],
+      "Public-data ingestion, provenance design, bilingual UX, quality controls, security checks, and CI-safe analytics delivery.",
+    roleSignal: "Public-data ingestion, provenance, bilingual evidence UI, and validation.",
+    techStack: ["Python", "FastAPI", "Next.js", "Data validation", "Evidence UI", "CI", "Public data analytics"],
     githubUrl: "https://github.com/Praciller/thai-procurement-intelligence",
     liveDemoUrl: "https://thai-procurement-intelligence.vercel.app",
     screenshotUrl: "/images/projects/thai-procurement-intelligence.png",
-    screenshotAlt: "Thai procurement intelligence home dashboard with records, budget metrics, and province counts.",
+    screenshotAlt: "Thai procurement intelligence dashboard with bilingual public-data evidence.",
     status: "completed",
     presentationStatus: "Demo available",
-    flagship: false,
-    tags: ["Data engineering", "Hybrid search", "Bilingual", "Public data"],
-    highlights: [
-      "Validation, normalization, deduplication, and import counters for source ingestion.",
-      "Keyword, deterministic semantic, and hybrid search modes with evidence retrieval.",
-      "English and Thai UI state across navigation, metrics, tables, and loading states.",
-    ],
-    architecture: [
-      "CSV or JSON source",
-      "FastAPI ingestion",
-      "PostgreSQL and pgvector",
-      "Search and analytics API",
-      "Optional LLM provider",
-      "Next.js bilingual UI",
-      "Evidence-backed assistant",
-    ],
-    metricsOrLessons: [
-      "The public demo contains 120 synthetic records and labels them clearly in the interface.",
-      "AI features are optional; search, analytics, export, and evidence retrieval remain usable without provider keys.",
-      "Synthetic sample data is useful for product verification but must not be represented as official procurement evidence.",
-    ],
-    futureImprovements: [
-      "Select and map an approved official Thai procurement source.",
-      "Add stronger provenance and confidence displays.",
-      "Schedule incremental ingestion and data-quality monitoring.",
-    ],
-    sourceNote: "Repository README and live deployment reviewed June 14, 2026.",
+    featured: true,
+    priority: 6,
+    tags: ["Public data", "Provenance", "Bilingual", "Validation"],
+    highlights: ["Official snapshot provenance is retained through ingestion.", "Dataset-state labeling distinguishes official evidence from demo modes.", "Quality reports, security controls, and CI checks protect the reviewer path."],
+    architecture: ["Official DGA snapshot", "Provenance-aware ingestion", "Validation", "Analytics API", "Bilingual evidence UI", "Quality reports", "CI controls"],
+    technicalDecisions: ["Source identifiers and dataset mode remain visible rather than being collapsed into generic records.", "The application preserves a deterministic fallback path when official data is unavailable."],
+    verificationEvidence: ["Official-source provenance", "Quality and evaluation reports", "CI validation and security controls"],
+    securityPrivacy: ["Only public procurement data belongs in the official dataset path.", "Secrets and environment-specific configuration remain outside the repository."],
+    limitations: ["Coverage is bounded by the approved snapshot rather than all procurement activity.", "The interface must continue to disclose which dataset mode is active."],
+    futureImprovements: ["Add approved incremental official snapshots.", "Expand provenance and quality monitoring across source revisions."],
+    sourceNote: "Claims limited to the public repository, official-source metadata, reports, and existing public deployment.",
   },
-];
+] satisfies Project[]).sort((left, right) => left.priority - right.priority);
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);
 }
 
-export const flagshipProjects = projects.filter((project) => project.flagship);
-export const aiEngineeringProjects = projects.filter(
-  (project) => project.category === "ai-engineering",
-);
+export const flagshipProjects = projects.filter((project) => project.featured).slice(0, 3);
+export const aiEngineeringProjects = projects.filter((project) => project.category === "ai-engineering");
 export const dataMlProjects = projects.filter((project) => project.category === "data-ml");

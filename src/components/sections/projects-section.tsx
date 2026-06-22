@@ -10,8 +10,8 @@ export function ProjectsSection() {
   return (
     <Section
       id="projects"
-      title="Selected Work"
-      intro="Three evidence-led case studies across agentic RAG, multimodal product engineering, and time-series ML evaluation."
+      title="Featured Projects"
+      intro="Priority case studies across data engineering, RAG systems, and ML/MLOps, backed by public repository evidence."
       tone="soft"
     >
       <div>
@@ -33,7 +33,7 @@ export function ProjectsSection() {
             <span>
               <span className="block text-lg">Explore all 6 case studies</span>
               <span className="mt-1 block text-sm font-medium opacity-80">
-                AI engineering, data systems, and applied ML evidence
+                Data engineering, AI systems, ML/MLOps, Thai NLP, and public-data evidence
               </span>
             </span>
             <ArrowRight

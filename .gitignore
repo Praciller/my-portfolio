@@ -29,6 +29,15 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
+
+# local caches and artifacts
+.cache/
+.turbo/
+tmp/
+temp/
+/artifacts/
+/dist/
 
 # env files (can opt-in for committing if needed)
 .env*
