@@ -14,8 +14,8 @@ describe("portfolio content contract", () => {
     assert.equal(profile.linkedinUrl, "https://www.linkedin.com/in/pakon-poomson/");
   });
 
-  it("ships the six approved GitHub-backed portfolio projects", () => {
-    assert.equal(projects.length, 6);
+  it("ships the approved GitHub-backed portfolio projects", () => {
+    assert.equal(projects.length, 7);
     assert.ok(projects.every((project) => project.githubUrl?.startsWith("https://github.com/Praciller/")));
     assert.deepEqual(projects.map((project) => project.slug), [
       "urban-mobility-data-platform",
@@ -24,6 +24,7 @@ describe("portfolio content contract", () => {
       "receipt-ai-expense-tracker",
       "thai-review-sentiment-intelligence",
       "thai-procurement-intelligence",
+      "retailguard-data-platform",
     ]);
     assert.ok(projects.every((project) => project.problem && project.solution && project.outcome));
     assert.ok(projects.every((project) => project.whatIBuilt && project.whatItProves));

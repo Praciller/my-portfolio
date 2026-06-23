@@ -291,6 +291,59 @@ export const projects = ([
     futureImprovements: ["Add approved incremental official snapshots.", "Expand provenance and quality monitoring across source revisions."],
     sourceNote: "Claims limited to the public repository, official-source metadata, reports, and verified public deployment as of 24 Jun 2026.",
   },
+  {
+    id: "retailguard-data-platform",
+    title: "RetailGuard Data Platform",
+    slug: "retailguard-data-platform",
+    category: "data-ml",
+    categoryLabel: "Retail Data Engineering / Quality Platform",
+    description:
+      "Zero-cost local retail data platform with incremental Bronze extraction, protected Silver data, blocking quality checks, and DuckDB warehouse evidence.",
+    problem:
+      "Retail data pipelines need reproducible ingestion, privacy controls, quality gates, and reviewer-visible evidence without requiring cloud accounts or billing.",
+    solution:
+      "Built a local-first pipeline from deterministic PostgreSQL and FastAPI sources into Bronze Parquet, PySpark Silver, blocking quality checks, and DuckDB star-schema serving views.",
+    outcome:
+      "The repository produces a local portfolio report with KPIs, quality status, privacy controls, reconciliation, idempotency proof, layer counts, and DuckDB objects.",
+    whatIBuilt:
+      "A local retail analytics platform spanning source seeding, incremental extraction, privacy-aware transformation, quality gates, warehouse loading, and evidence reporting.",
+    whatItProves:
+      "Data engineering, PySpark transformations, warehouse modeling, privacy controls, quality gates, idempotency, Docker, and local-first reviewer workflows.",
+    roleSignal: "Incremental pipelines, PySpark, DuckDB warehousing, quality gates, and privacy-aware data engineering.",
+    techStack: ["Python", "PySpark", "DuckDB", "PostgreSQL", "FastAPI", "Docker", "Data quality"],
+    githubUrl: "https://github.com/Praciller/retailguard-data-platform",
+    screenshotAlt: "Abstract system view for RetailGuard local retail data platform.",
+    status: "completed",
+    presentationStatus: "Case study",
+    featured: true,
+    priority: 7,
+    tags: ["Data engineering", "PySpark", "DuckDB", "Quality gates"],
+    highlights: [
+      "Default review path is fully local and requires no cloud account, billing account, free trial, or hosted service.",
+      "Blocking checks cover keys, values, relationships, reconciliation, volume, and raw PII leakage.",
+      "Two-run idempotency proof and a deliberately failing fixture make reliability visible to reviewers.",
+    ],
+    architecture: ["PostgreSQL source", "FastAPI campaign source", "Bronze Parquet", "PySpark Silver", "Quality gate", "DuckDB star schema", "Markdown evidence report"],
+    technicalDecisions: [
+      "Local-first defaults keep the portfolio review path free of required cloud infrastructure.",
+      "Raw personal fields are removed before Silver, with email hashed and phone masked.",
+    ],
+    verificationEvidence: [
+      "Local demo writes data/evidence/local_portfolio_report.md",
+      "Quality gates block invalid fixtures before warehouse load",
+      "Two-run demo proves deterministic seeding and warehouse idempotency",
+    ],
+    securityPrivacy: [
+      "Default workflow uses deterministic local sources rather than private retail data.",
+      "Raw name, email, address, and phone are removed before Silver; email is hashed and phone is masked.",
+    ],
+    limitations: [
+      "The portfolio links to repository evidence rather than claiming a public live deployment.",
+      "Synthetic local data demonstrates the pipeline contract, not production retail volume.",
+    ],
+    futureImprovements: ["Add approved real-world retail sources when available.", "Expand operational monitoring around quality trends."],
+    sourceNote: "Claims limited to the public repository and documented local portfolio review path.",
+  },
 ] satisfies Project[]).sort((left, right) => left.priority - right.priority);
 
 export function getProjectBySlug(slug: string) {
