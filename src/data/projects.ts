@@ -247,15 +247,15 @@ export const projects = ([
     category: "data-ml",
     categoryLabel: "Public Data / Procurement Analytics",
     description:
-      "Public procurement intelligence project using an official DGA procurement snapshot.",
+      "Bilingual procurement intelligence platform using a governed 250-record official DGA/CGD snapshot.",
     problem:
       "Procurement analysis needs source provenance, quality checks, bilingual evidence, and clear dataset-state communication before records can support credible comparisons.",
     solution:
-      "Built provenance-aware ingestion and validation around an official DGA procurement snapshot, with bilingual evidence views, quality reports, security controls, and CI validation.",
+      "Built provenance-aware ingestion and validation around an official DGA/CGD procurement snapshot, with bilingual evidence views, checksum verification, quality reports, security controls, and CI validation.",
     outcome:
-      "The project separates official and demonstration data states and routes users from analytics back to source-aware evidence.",
+      "The verified production deployment serves 250 official records with record-level provenance, source links, quality evidence, and bounded-snapshot limitations visible in the UI.",
     whatIBuilt:
-      "A bilingual public-data analytics workflow spanning official-source ingestion, provenance, validation, evidence views, and quality reporting.",
+      "A bilingual public-data analytics workflow spanning official-source ingestion, SHA-256 verification, provenance, validation, evidence views, quality reporting, and source-linked assistant retrieval.",
     whatItProves:
       "Public-data ingestion, provenance design, bilingual UX, quality controls, security checks, and CI-safe analytics delivery.",
     roleSignal: "Public-data ingestion, provenance, bilingual evidence UI, and validation.",
@@ -269,14 +269,27 @@ export const projects = ([
     featured: true,
     priority: 6,
     tags: ["Public data", "Provenance", "Bilingual", "Validation"],
-    highlights: ["Official snapshot provenance is retained through ingestion.", "Dataset-state labeling distinguishes official evidence from demo modes.", "Quality reports, security controls, and CI checks protect the reviewer path."],
-    architecture: ["Official DGA snapshot", "Provenance-aware ingestion", "Validation", "Analytics API", "Bilingual evidence UI", "Quality reports", "CI controls"],
+    highlights: [
+      "Production uses a governed 250-record official DGA/CGD snapshot with SHA-256 verification.",
+      "Record detail pages retain source URL, snapshot ID, retrieval date, license, and quality evidence.",
+      "Hybrid retrieval and assistant answers cite source-linked procurement records while keeping limitations visible.",
+    ],
+    architecture: ["Official DGA/CGD snapshot", "Provenance-aware ingestion", "Checksum verification", "Analytics API", "Bilingual evidence UI", "Quality reports", "CI controls"],
     technicalDecisions: ["Source identifiers and dataset mode remain visible rather than being collapsed into generic records.", "The application preserves a deterministic fallback path when official data is unavailable."],
-    verificationEvidence: ["Official-source provenance", "Quality and evaluation reports", "CI validation and security controls"],
+    verificationEvidence: [
+      "Production verified on 24 Jun 2026 at https://thai-procurement-intelligence.vercel.app",
+      "250 official records, 250 unique source IDs, checksum 413f70c0ef17c17233b99aa42a7f1e25284644948c37bd109c21e9cc0678618b",
+      "Keyword search for ซื้อ returned 142 records; semantic search returned 2 records; assistant returned 3 cited records",
+      "Quality status reports 250 valid records, 0 rejected records, and 0 duplicate records for the bounded snapshot",
+    ],
     securityPrivacy: ["Only public procurement data belongs in the official dataset path.", "Secrets and environment-specific configuration remain outside the repository."],
-    limitations: ["Coverage is bounded by the approved snapshot rather than all procurement activity.", "The interface must continue to disclose which dataset mode is active."],
+    limitations: [
+      "Coverage is bounded to the approved 250-record snapshot, not complete national procurement coverage.",
+      "The site is not real-time and does not claim evidence of corruption, misconduct, or production-scale accuracy.",
+      "Generated summaries and assistant answers require review and are distinct from official source facts.",
+    ],
     futureImprovements: ["Add approved incremental official snapshots.", "Expand provenance and quality monitoring across source revisions."],
-    sourceNote: "Claims limited to the public repository, official-source metadata, reports, and existing public deployment.",
+    sourceNote: "Claims limited to the public repository, official-source metadata, reports, and verified public deployment as of 24 Jun 2026.",
   },
 ] satisfies Project[]).sort((left, right) => left.priority - right.priority);
 
